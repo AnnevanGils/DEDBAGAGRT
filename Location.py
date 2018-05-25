@@ -8,5 +8,6 @@ class Location:
     def __str__(self):
         return str(self.lat) + ', ' + str(self.lon)
 
+    #   overload the '==' operator to work with the Location class
     def __eq__(self, other):
         return self.lat == other.lat and self.lon == other.lon

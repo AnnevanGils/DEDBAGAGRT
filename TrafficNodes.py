@@ -5,9 +5,10 @@ import os.path
 from Location import *
 from Interval import *
 
-#   class to store all the important attributes associated to a TrafficNode
+
+#   class to store all the important attributes associated to a TrafficNode object
 class TrafficNode:
-    def __init__(self, id, type, interval, location, locName):
+    def __init__(self, id, type: str, interval: Interval, location: Location, locName: str):
         self.id = id
         self.type = type
         self.interval = interval
@@ -15,14 +16,12 @@ class TrafficNode:
         self.locName = locName
 
     def __str__(self):
-        return str(self.id) + ', ' + str(self.type) + ', ' + str(self.interval.startDate) + ', ' + \
-               str(self.interval.startTime) + ', ' + str(self.interval.endDate) + ', ' + \
-               str(self.interval.endTime) + ', ' + str(self.location.lat) + ', ' + \
-               str(self.location.lon) + ', ' + str(self.locName)
+        return str(self.id) + ', ' + str(self.type) + ', ' + str(self.interval) + ', ' + str(
+            self.location) + ', ' + str(self.locName)
 
 
 #   function to extract TrafficNodes from a .csv file and store them in a list
-def loadTrafficNodes(fileName):
+def loadTrafficNodes(fileName: str) -> list:
     reader = csv.reader(open(fileName))
 
     trafficNodes = []
@@ -57,13 +56,20 @@ def loadTrafficNodes(fileName):
     return trafficNodes
 
 
-def saveTrafficNodes(nodes):
+#   function to save a list of TrafficNodes to .csv
+def saveTrafficNodes(nodes: list):
+    #   list all header names
     header = ['id', 'type', 'start date', 'start time', 'end date', 'end time', 'latitude', 'longitude',
               'location name']
+    #   open (or create) the file to save the nodes to
+    #   the file is located in the script directory
     file = open(os.path.dirname(os.path.abspath(__file__)) + '\\trafficNodes.csv', 'w')
 
+    #   write the elements of the header list to file
+    #   separated by ', '
     file.write(', '.join(header))
 
+    #   write the attributes of each node to a different row
     for node in nodes:
         file.write('\n' + str(node))
 
