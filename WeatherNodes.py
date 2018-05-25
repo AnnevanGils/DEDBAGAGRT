@@ -29,6 +29,8 @@ class WeatherNode:
             self.precipitation) + ', ' + str(self.sight) + ', ' + str(self.fog) + ', ' + str(self.rain) + ', ' + str(
             self.snow) + ', ' + str(self.thunder) + ', ' + str(self.ice)
 
+    def interval(self):
+        return self.interval
 
 def loadWeatherNodes(fileName):
     reader = csv.reader(open(fileName))

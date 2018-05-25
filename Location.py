@@ -10,3 +10,9 @@ class Location:
 
     def __eq__(self, other):
         return self.lat == other.lat and self.lon == other.lon
+
+    def latitude(self):
+        return self.lat
+
+    def longitude(self):
+        return self.lon

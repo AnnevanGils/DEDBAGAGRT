@@ -20,6 +20,14 @@ class TrafficNode:
                str(self.interval.endTime) + ', ' + str(self.location.lat) + ', ' + \
                str(self.location.lon) + ', ' + str(self.locName)
 
+    def lon(self):
+        return self.location.longitude()
+
+    def lat(self):
+        return self.location.latitude()
+
+    def interval(self):
+        return self.interval
 
 #   function to extract TrafficNodes from a .csv file and store them in a list
 def loadTrafficNodes(fileName):
